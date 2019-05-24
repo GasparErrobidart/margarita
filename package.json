@@ -1,0 +1,11 @@
+{
+  "name": "@molecule-driver/videoclu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "javac renderer/*.java *.java && java Main"
+  },
+  "author": "",
+  "license": "ISC"
+}
