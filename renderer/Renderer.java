@@ -41,7 +41,6 @@ public class Renderer{
 
     current = imagen1;
     frame.add(current);
-    new Timer
     Timer t = new Timer (1000/24, new ActionListener ()
     {
         public void actionPerformed(ActionEvent ev)
