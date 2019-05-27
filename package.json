@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "javac renderer/*.java *.java && java Main"
+    "start": "javac animaper/*.java *.java && java Main"
   },
   "author": "",
   "license": "ISC"
