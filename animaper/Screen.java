@@ -18,6 +18,7 @@ public class Screen{
   }
 
   public void render(){
+    window.revalidate();
     window.repaint();
   }
 
