@@ -3,12 +3,58 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.awt.Graphics;
 
 public class Component extends Rendereable{
 
   private BufferedImage bitmap;
+  private int frameOffsetX;
+  private int frameOffsetY;
 
-  public Component(){}
+  public Component(){
+    setFrameOffset(0,0);
+  }
+
+  /**
+   * @return the frameOffsetX
+   */
+  public int getFrameOffsetX() {
+  	return frameOffsetX;
+  }
+
+  /**
+   * @return the frameOffsetY
+   */
+  public int getFrameOffsetY() {
+  	return frameOffsetY;
+  }
+
+  /**
+   * @param x the frameOffsetX to set
+   */
+  public void setFrameOffsetX(int x) {
+  	this.frameOffsetX = x;
+  }
+
+  /**
+   * @param y the frameOffsetY to set
+   */
+  public void setFrameOffsetY(int y) {
+  	this.frameOffsetY = y;
+  }
+
+  /**
+   * @param x the frameOffsetY to set
+   * @param y the frameOffsetX to set
+   */
+  public void setFrameOffset(int x,int y) {
+    setFrameOffsetX(x);
+  	setFrameOffsetY(y);
+  }
+
+  protected BufferedImage getBitmap(){
+    return bitmap;
+  }
 
   public void move(int x, int y,int z){
     setPosition(new Position(
@@ -42,12 +88,12 @@ public class Component extends Rendereable{
     }
   }
 
-  protected BufferedImage getBitmap(){
-    return bitmap;
-  }
-
   public BufferedImage render(){
-    return getBitmap();
+    BufferedImage bitmap = getBitmap();
+    BufferedImage frame = new BufferedImage(getWidth(),getHeight(),bitmap.getType());
+    Graphics g = frame.getGraphics();
+    g.drawImage(bitmap, frameOffsetX, frameOffsetY, null);
+    return frame;
   }
 
 }

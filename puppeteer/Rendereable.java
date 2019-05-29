@@ -50,6 +50,15 @@ abstract public class Rendereable{
   }
 
   /**
+   * @param width the width to set
+   * @param height the height to set
+   */
+  public void setSize(int width, int height) {
+    setWidth(width);
+  	setHeight(height);
+  }
+
+  /**
    * @param position the position to set
    */
   public void setPosition(Position position) {
