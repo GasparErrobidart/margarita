@@ -1,10 +1,10 @@
 {
-  "name": "@molecule-driver/videoclu",
+  "name": "margarita",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "javac animaper/*.java *.java && java Main"
+    "start": "javac *.java && java Main"
   },
   "author": "",
   "license": "ISC"
