@@ -17,9 +17,11 @@ public class Main {
   public static void main (String [] args) {
 
     Screen screen = new Screen(600,600);
-    Component box = new Component(0,0,100,100);
-    Component box2 = new Component(0,0,60,60);
-    BufferedImage img = new BufferedImage(600,600, BufferedImage.TYPE_INT_RGB);
+    Component box = new Component();
+    box.loadBitmap("demo/images/sanic.png");
+    box.setSizeFromBitmap();
+    // Component box2 = new Component(0,0,60,60);
+    BufferedImage img = new BufferedImage(600,600, BufferedImage.TYPE_INT_ARGB);
 
 
     // color = new Color(r,g,b);
@@ -33,8 +35,8 @@ public class Main {
 
     // paint both images, preserving the alpha channels
     Graphics g = img.getGraphics();
-    g.drawImage(box.render(), box.x, box.y, null);
-    g.drawImage(box2.render(), box2.x, box2.y, null);
+    g.drawImage(box.render(), box.getPosition().getX(), box.getPosition().getY(), null);
+    // g.drawImage(box2.render(), box2.x, box2.y, null);
     screen.setImage(img);
     screen.render();
 
@@ -61,10 +63,10 @@ public class Main {
             //     }
             // };
             box.move(1,1);
-            box2.move(1,0);
+            // box2.move(1,0);
             g.clearRect(0, 0, 600, 600);
-            g.drawImage(box.render(), box.x, box.y, null);
-            g.drawImage(box2.render(), box2.x, box2.y, null);
+            g.drawImage(box.render(), box.getPosition().getX(), box.getPosition().getY(), null);
+            // g.drawImage(box2.render(), box2.x, box2.y, null);
             screen.setImage(img);
             screen.render();
 

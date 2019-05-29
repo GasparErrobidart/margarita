@@ -2,6 +2,7 @@ package puppeteer;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
+import java.io.IOException;
 
 public class Component extends Rendereable{
 
@@ -21,9 +22,14 @@ public class Component extends Rendereable{
     move(x,y,0);
   }
 
-  public void setBitmap(String location){
+  public void setBitmap(BufferedImage image){
+    bitmap = image;
+  }
+
+  public void loadBitmap(String location){
     try{
-      bitmap = ImageIO.read(new File(location));
+      BufferedImage image = ImageIO.read(new File(location));
+      setBitmap(image);
     }catch(IOException exc){
       exc.printStackTrace();
     }
@@ -36,8 +42,12 @@ public class Component extends Rendereable{
     }
   }
 
-  public BufferedImage render(){
+  protected BufferedImage getBitmap(){
     return bitmap;
+  }
+
+  public BufferedImage render(){
+    return getBitmap();
   }
 
 }

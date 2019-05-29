@@ -13,15 +13,15 @@ public class Position{
   }
 
   public int getX(){
-    return x;
+    return xPos;
   }
 
   public int getY(){
-    return y;
+    return yPos;
   }
 
   public int getZ(){
-    return z;
+    return zPos;
   }
 
   public void setX(int x){
