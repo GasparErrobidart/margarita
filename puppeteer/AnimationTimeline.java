@@ -2,40 +2,89 @@ package puppeteer;
 
 public class AnimationTimeline{
 
-  private Frames[] frames;
+  private AnimationFrame[] frames;
+  private boolean loop;
+  private int current;
 
-  public AnimationTimeline(){}
-
-  public AnimationFrame(){
-    this(0,0);
+  public AnimationTimeline(AnimationFrame[] frames){
+    setFrames(frames);
+    setCurrent(0);
+    setLoop(false);
   }
 
   /**
-   * @return the y
+   * @return the current
    */
-  public int getY() {
-  	return y;
+  public int getCurrent() {
+  	return current;
   }
 
   /**
-   * @return the x
+   * @param current the current to set
    */
-  public int getX() {
-  	return x;
+  public void setCurrent(int current) {
+  	this.current = current;
   }
 
   /**
-   * @param y the y to set
+   * @param loop the loop to set
    */
-  public void setY(int y) {
-  	this.y = y;
+  public void setLoop(boolean loop) {
+  	this.loop = loop;
+  }
+
+  public boolean getLoop(){
+    return this.loop;
   }
 
   /**
-   * @param x the x to set
+   * @return the frames
    */
-  public void setX(int x) {
-  	this.x = x;
+  public AnimationFrame[] getFrames() {
+  	return frames;
+  }
+
+  /**
+   * @param frames the frames to set
+   */
+  public void setFrames(AnimationFrame[] frames) {
+  	this.frames = frames;
+  }
+
+  public int getSize(){
+    return this.frames.length;
+  }
+
+  public AnimationFrame getAnimationFrame(){
+    return this.frames[getCurrent()];
+  }
+
+  public AnimationFrame next(){
+    if(getCurrent() < getSize()-1){
+      setCurrent(getCurrent()+1);
+    }else if(getLoop()){
+      setCurrent(0);
+    }
+    return getAnimationFrame();
+  }
+
+  public AnimationFrame previous(){
+    if(getCurrent() > 0){
+      setCurrent(getCurrent()-1);
+    }else if(getLoop()){
+      setCurrent(getSize()-1);
+    }
+    return getAnimationFrame();
+  }
+
+  public AnimationFrame last(){
+    setCurrent(getSize()-1);
+    return getAnimationFrame();
+  }
+
+  public AnimationFrame first(){
+    setCurrent(0);
+    return getAnimationFrame();
   }
 
 }
