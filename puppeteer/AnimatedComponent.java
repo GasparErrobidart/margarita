@@ -12,14 +12,6 @@ public class AnimatedComponent extends Component{
     this.timelines = new HashMap<String, AnimationTimeline>();
   }
 
-  public void addTimeline(String name, AnimationTimeline timeline){
-    this.timelines.put(name,timeline);
-  }
-
-  public void removeTimeline(String name){
-    this.timelines.remove(name);
-  }
-
   /**
    * @return the currentTimelineName
    */
@@ -30,9 +22,17 @@ public class AnimatedComponent extends Component{
   /**
    * @param currentTimeline the currentTimelineName to set
    */
-  public void setcurrentTimeline(String name) {
+  public void setCurrentTimeline(String name) {
   	this.currentTimelineName = name;
     this.currentTimeline = this.timelines.get(name);
+  }
+
+  public void addTimeline(String name, AnimationTimeline timeline){
+    this.timelines.put(name,timeline);
+  }
+
+  public void removeTimeline(String name){
+    this.timelines.remove(name);
   }
 
   public BufferedImage render(){

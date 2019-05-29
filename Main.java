@@ -16,20 +16,31 @@ public class Main {
 
   public static void main (String [] args) {
 
+    // DEFINE SCREEN
     Screen screen = new Screen(600,600);
+    // CREATE ANIMATED COMPONET TYPE
     AnimatedComponent box = new AnimatedComponent();
+
+    // LOAD SPRITE SHEET
     box.loadBitmap("demo/images/galactica.png");
+    // SET COMPONENT FRAME SIZE
     box.setSize(80,80);
+    // DEFINE TIMELINE FRAMES
     AnimationFrame[] frames = {
       new AnimationFrame(-372,-1765),
       new AnimationFrame(-372,-1845),
       new AnimationFrame(-372,-1925)
     };
+    // CREATE MAIN TIMELINE FOR COMPONENT
     AnimationTimeline mainTimeline = new AnimationTimeline(frames);
+    // SET ANIMATION TIMELINE TO LOOP OVER
     mainTimeline.setLoop(true);
+    // ADD MAIN TIMELINE TO ANIMATED COMPONENT
     box.addTimeline("main", mainTimeline);
-    box.setcurrentTimeline("main");
-    // Component box2 = new Component(0,0,60,60);
+    // SET THE ACTIVE TIMELINE TO "main"
+    box.setCurrentTimeline("main");
+
+    // TEMPORARY WINDOW FRAME IMAGE FOR COMPOSING
     BufferedImage img = new BufferedImage(600,600, BufferedImage.TYPE_INT_ARGB);
     Graphics g = img.getGraphics();
     g.drawImage(box.render(), box.getPosition().getX(), box.getPosition().getY(), null);
@@ -41,6 +52,7 @@ public class Main {
         public void actionPerformed(ActionEvent ev)
         {
           try {
+            // TIME LOOP FOR MOVING THE X,Y POSITION OF THE COMPONENT
             box.move(1,2);
             g.clearRect(0, 0, 600, 600);
             g.drawImage(box.render(), box.getPosition().getX(), box.getPosition().getY(), null);
