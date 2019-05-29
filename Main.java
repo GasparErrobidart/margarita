@@ -18,9 +18,17 @@ public class Main {
 
     Screen screen = new Screen(600,600);
     AnimatedComponent box = new AnimatedComponent();
-    box.loadBitmap("demo/images/sanic.png");
-    box.setSize(300,300);
-    box.setFrameOffset(-100,-100);
+    box.loadBitmap("demo/images/galactica.png");
+    box.setSize(80,80);
+    AnimationFrame[] frames = {
+      new AnimationFrame(-372,-1765),
+      new AnimationFrame(-372,-1845),
+      new AnimationFrame(-372,-1925)
+    };
+    AnimationTimeline mainTimeline = new AnimationTimeline(frames);
+    mainTimeline.setLoop(true);
+    box.addTimeline("main", mainTimeline);
+    box.setcurrentTimeline("main");
     // Component box2 = new Component(0,0,60,60);
     BufferedImage img = new BufferedImage(600,600, BufferedImage.TYPE_INT_ARGB);
     Graphics g = img.getGraphics();
@@ -33,7 +41,7 @@ public class Main {
         public void actionPerformed(ActionEvent ev)
         {
           try {
-            box.move(1,1);
+            box.move(1,2);
             g.clearRect(0, 0, 600, 600);
             g.drawImage(box.render(), box.getPosition().getX(), box.getPosition().getY(), null);
             screen.setImage(img);
