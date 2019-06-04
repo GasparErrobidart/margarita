@@ -1,35 +1,21 @@
 package animaper;
-import java.awt.image.BufferedImage;
-import javax.swing.JFrame;
-import java.awt.Dimension;
-
 
 public class Screen{
 
-  private JFrame window;
-  private ImagePanel current;
+  private static final Screen instance = new Screen();
 
-
-  public Screen(int width, int height){
-    window = new JFrame("WINDOW");
-    window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    window.setVisible(true);
-    window.setSize(new Dimension(width,height));
+  public  static Screen getInstance() {
+    return instance;
   }
 
-  public void render(){
-    window.revalidate();
-    window.repaint();
+
+  private Screen(){
+
   }
 
-  public void clear(){
-    if(current != null ) window.remove(current);
+  public void test(){
+    System.out.println("TESTT!");
   }
 
-  public void setImage(BufferedImage image){
-    clear();
-    current = new ImagePanel(image);
-    window.add(current);
-  }
 
 }
