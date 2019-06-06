@@ -1,5 +1,6 @@
 import animaper.*;
 import puppeteer.*;
+import demo.*;
 import java.awt.image.BufferedImage;
 import java.awt.Color;
 import java.awt.event.*;
@@ -8,55 +9,22 @@ import java.awt.Graphics;
 
 public class Main {
 
-  public static int r = 0;
-  public static int g = 0;
-  public static int b = 0;
-  public static Color color;
-
   public static void main (String [] args) {
 
     Scene scene = Scene.getInstance();
 
-    // CREATE ANIMATED COMPONET TYPE
-    AnimatedComponent ship = new AnimatedComponent();
-    // LOAD SPRITE SHEET
-    ship.loadBitmap("demo/images/galactica.png");
-    // SET COMPONENT FRAME SIZE
-    ship.setSize(80,80);
-    // DEFINE TIMELINE FRAMES
-    AnimationFrame[] frames = {
-      new AnimationFrame(-372,-1765),
-      new AnimationFrame(-372,-1845),
-      new AnimationFrame(-372,-1925)
-    };
-
-    // CREATE MAIN TIMELINE FOR COMPONENT
-    AnimationTimeline mainTimeline = new AnimationTimeline(frames);
-    // SET ANIMATION TIMELINE TO LOOP OVER
-    mainTimeline.setLoop(true);
-    // ADD MAIN TIMELINE TO ANIMATED COMPONENT
-    ship.addTimeline("main", mainTimeline);
-    // SET THE ACTIVE TIMELINE TO "main"
-    ship.setCurrentTimeline("main");
+    Ship ship1 = new Ship();
+    Ship ship2 = new Ship();
+    Ship ship3 = new Ship();
+    Ship ship4 = new Ship();
 
 
-    scene.add(ship);
+    scene.add(ship1);
+    scene.add(ship2);
+    scene.add(ship3);
+    scene.add(ship4);
 
     scene.start();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -68,7 +36,9 @@ public class Main {
         {
           try {
             // TIME LOOP FOR MOVING THE X,Y POSITION OF THE COMPONENT
-            ship.move(1,2);
+            ship2.move(4,4);
+            ship3.move(1,0);
+            ship4.move(0,1);
 
           }
           catch(Exception e) {

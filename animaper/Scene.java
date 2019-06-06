@@ -13,6 +13,7 @@ public class Scene{
   private static final int height = 600;
   private static final Scene instance = new Scene();
   private static final Screen screen = new Screen(width,height);
+  private boolean paused = false;
   private int lastId = -1;
   private ArrayList<Component> components;
   private int FPS = 24;
@@ -43,8 +44,20 @@ public class Scene{
     render();
   }
 
+  public boolean isPaused(){
+    return paused;
+  }
+
   private void update(){
     components.forEach((Component c) -> c.update());
+  }
+
+  public void pause(){
+    this.paused = true;
+  }
+
+  public void resume(){
+    this.paused = false;
   }
 
   // private void detectCollision(){
@@ -71,11 +84,13 @@ public class Scene{
     {
         public void actionPerformed(ActionEvent ev)
         {
-          try {
-            nextFrame();
-          }
-          catch(Exception e) {
-            e.printStackTrace();
+          if(!isPaused()){
+            try {
+              nextFrame();
+            }
+            catch(Exception e) {
+              e.printStackTrace();
+            }
           }
          }
     });
