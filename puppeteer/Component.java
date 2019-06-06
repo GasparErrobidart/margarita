@@ -4,15 +4,31 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 import java.awt.Graphics;
+import animaper.Scene;
 
 public class Component extends Rendereable{
 
   private BufferedImage bitmap;
   private int frameOffsetX;
   private int frameOffsetY;
+  private int id = -1;
 
   public Component(){
     setFrameOffset(0,0);
+  }
+
+  /**
+   * @return the id
+   */
+  public int getId() {
+  	return id;
+  }
+
+  /**
+   * @param id the id to set
+   */
+  public void setId(Scene scene) {
+  	this.id = scene.nextId();
   }
 
   /**
@@ -88,12 +104,24 @@ public class Component extends Rendereable{
     }
   }
 
+  public void update(){
+    // DO NOTHING
+  }
+
   public BufferedImage render(){
     BufferedImage bitmap = getBitmap();
     BufferedImage frame = new BufferedImage(getWidth(),getHeight(),bitmap.getType());
     Graphics g = frame.getGraphics();
     g.drawImage(bitmap, frameOffsetX, frameOffsetY, null);
     return frame;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    Component component = (Component) obj;
+    int cId = component.getId();
+    boolean isEqual = cId != -1 && cId == this.getId();
+    return isEqual;
   }
 
 }
