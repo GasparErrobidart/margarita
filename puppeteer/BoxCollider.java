@@ -11,11 +11,12 @@ public class BoxCollider implements Collider{
   public BoxCollider(int width, int height){
     setWidth(width);
     setHeight(height);
+    enable();
   }
 
-  public ArrayList<Collision> detectCollision(ArrayList<Component> components){
+  public ArrayList<Collision> detectCollision(Component self, ArrayList<Component> components){
     ArrayList<Collision> collisionList = new ArrayList<Collision>();
-    Component a = this;
+    Component a = self;
     for( Component b : components){
       if(a.getPosition().getX() < b.getPosition().getX() + b.getWidth() &&
          a.getPosition().getX() + a.getWidth() > b.getPosition().getX() &&

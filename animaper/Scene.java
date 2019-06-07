@@ -45,7 +45,7 @@ public class Scene{
   // THIS IS THE MAIN METHOD FOR THIS CLASS
   private void nextFrame(){
     update();
-    detectCollision();
+    // detectCollision();
     render();
   }
 

@@ -7,11 +7,11 @@ public class Ship extends AnimatedComponent{
   private BoxCollider collider;
 
   public Ship(){
-    collider = new BoxCollider(getWidth(),getHeight());
     // LOAD SPRITE SHEET
     loadBitmap(System.getProperty("user.dir")+"/demo/images/galactica.png");
     // SET COMPONENT FRAME SIZE
     setSize(80,80);
+    collider = new BoxCollider( 80,80 );
     // DEFINE TIMELINE FRAMES
     AnimationFrame[] frames = {
       new AnimationFrame(-372,-1765),
