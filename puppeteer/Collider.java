@@ -1,8 +1,9 @@
 package puppeteer;
+import java.util.ArrayList;
 
 public interface Collider{
 
-  public boolean detectCollision(ArrayList<Component> components);
+  public ArrayList<Collision> detectCollision(ArrayList<Component> components);
   public void enable();
   public void disable();
   public boolean isEnabled();

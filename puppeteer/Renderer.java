@@ -9,7 +9,7 @@ abstract public class Renderer implements Rendereable{
   private int height;
   private boolean visibility;
 
-  public Rendereable(){
+  public Renderer(){
     setPosition(new Position(0,0,0));
     setWidth(0);
     setHeight(0);

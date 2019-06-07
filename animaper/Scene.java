@@ -42,10 +42,10 @@ public class Scene{
     components.add(component);
   }
 
+  // THIS IS THE MAIN METHOD FOR THIS CLASS
   private void nextFrame(){
     update();
-    // detectCollision();
-    // animate();
+    detectCollision();
     render();
   }
 
@@ -65,13 +65,11 @@ public class Scene{
     this.paused = false;
   }
 
-  // private void detectCollision(){
-  //   components.forEach((Component c) -> c.detectCollision());
-  // }
-  //
-  // private void animate(){
-  //   components.forEach((Component c) -> c.animate());
-  // }
+  private void detectCollision(){
+    for(Component component : components){
+
+    }
+  }
 
   private void render(){
     // TEMPORARY WINDOW FRAME IMAGE FOR COMPOSING
