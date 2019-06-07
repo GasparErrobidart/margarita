@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.awt.Graphics;
 import animaper.Scene;
 
-public class Component extends Rendereable{
+public class Component extends Renderer{
 
   private BufferedImage bitmap;
   private int frameOffsetX;

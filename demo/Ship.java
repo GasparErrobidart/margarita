@@ -4,7 +4,10 @@ import puppeteer.*;
 
 public class Ship extends AnimatedComponent{
 
+  private BoxCollider collider;
+
   public Ship(){
+    collider = new BoxCollider(getWidth(),getHeight());
     // LOAD SPRITE SHEET
     loadBitmap(System.getProperty("user.dir")+"/demo/images/galactica.png");
     // SET COMPONENT FRAME SIZE
@@ -23,6 +26,10 @@ public class Ship extends AnimatedComponent{
     this.addTimeline("main", mainTimeline);
     // SET THE ACTIVE TIMELINE TO "main"
     this.setCurrentTimeline("main");
+  }
+
+  public BoxCollider getCollider(){
+    return this.collider;
   }
 
 }

@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import javax.swing.JFrame;
 import java.awt.Graphics;
 
 public class Scene{
@@ -22,7 +23,7 @@ public class Scene{
     components = new ArrayList<Component>();
   }
 
-  public  static Scene getInstance() {
+  public static Scene getInstance() {
     return instance;
   }
 
@@ -79,20 +80,21 @@ public class Scene{
     screen.render();
   }
 
+  public JFrame getWindow(){
+    return this.screen.getWindow();
+  }
+
   public void start(){
-    Timer t = new Timer (1000/FPS, new ActionListener ()
-    {
-        public void actionPerformed(ActionEvent ev)
-        {
-          if(!isPaused()){
-            try {
-              nextFrame();
-            }
-            catch(Exception e) {
-              e.printStackTrace();
-            }
+    Timer t = new Timer( 1000/FPS, new ActionListener (){
+      public void actionPerformed(ActionEvent ev){
+        if(!isPaused()){
+          try{
+            nextFrame();
+          }catch(Exception e) {
+            e.printStackTrace();
           }
-         }
+        }
+      }
     });
     t.start();
   }

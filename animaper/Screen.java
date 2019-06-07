@@ -22,6 +22,10 @@ public class Screen{
     window.repaint();
   }
 
+  public JFrame getWindow(){
+    return this.window;
+  }
+
   public void clear(){
     if(current != null ) window.remove(current);
   }
