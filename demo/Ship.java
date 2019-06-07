@@ -2,16 +2,14 @@ package demo;
 import animaper.*;
 import puppeteer.*;
 
-public class Ship extends AnimatedComponent{
-
-  private BoxCollider collider;
+public class Ship extends AnimatedComponent {
 
   public Ship(){
     // LOAD SPRITE SHEET
     loadBitmap(System.getProperty("user.dir")+"/demo/images/galactica.png");
     // SET COMPONENT FRAME SIZE
     setSize(80,80);
-    collider = new BoxCollider( 80,80 );
+    setCollider(new BoxCollider( 80,80 ));
     // DEFINE TIMELINE FRAMES
     AnimationFrame[] frames = {
       new AnimationFrame(-372,-1765),
@@ -28,8 +26,10 @@ public class Ship extends AnimatedComponent{
     this.setCurrentTimeline("main");
   }
 
-  public BoxCollider getCollider(){
-    return this.collider;
+  @Override
+  public void onCollision(Collision collision){
+    System.out.println("Chocando");
   }
+
 
 }

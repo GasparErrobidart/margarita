@@ -12,9 +12,28 @@ public class Component extends Renderer{
   private int frameOffsetX;
   private int frameOffsetY;
   private int id = -1;
+  private BoxCollider collider;
 
   public Component(){
     setFrameOffset(0,0);
+  }
+
+  /**
+   * @return the collider
+   */
+  public BoxCollider getCollider() {
+  	return collider;
+  }
+
+  /**
+   * @param collider the collider to set
+   */
+  public void setCollider(BoxCollider collider) {
+  	this.collider = collider;
+  }
+
+  public void onCollision(Collision collision){
+    
   }
 
   /**

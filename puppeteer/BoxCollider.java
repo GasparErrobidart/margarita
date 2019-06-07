@@ -18,10 +18,13 @@ public class BoxCollider implements Collider{
     ArrayList<Collision> collisionList = new ArrayList<Collision>();
     Component a = self;
     for( Component b : components){
-      if(a.getPosition().getX() < b.getPosition().getX() + b.getWidth() &&
-         a.getPosition().getX() + a.getWidth() > b.getPosition().getX() &&
-         a.getPosition().getY() < b.getPosition().getY() + b.getHeight() &&
-         a.getHeight() + a.getPosition().getY() > b.getPosition().getY())
+      if(
+        a.getPosition().getX() != b.getPosition().getX()
+         // a.getPosition().getX() < b.getPosition().getX() + b.getWidth() &&
+         // a.getPosition().getX() + a.getWidth() > b.getPosition().getX() &&
+         // a.getPosition().getY() < b.getPosition().getY() + b.getHeight() &&
+         // a.getHeight() + a.getPosition().getY() > b.getPosition().getY()
+         )
       {
          collisionList.add(new Collision(a,b));
       }

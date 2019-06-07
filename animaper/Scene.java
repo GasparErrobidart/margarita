@@ -1,5 +1,6 @@
 package animaper;
 import puppeteer.Component;
+import puppeteer.Collision;
 import java.util.ArrayList;
 import java.awt.image.BufferedImage;
 import java.awt.event.ActionEvent;
@@ -45,7 +46,7 @@ public class Scene{
   // THIS IS THE MAIN METHOD FOR THIS CLASS
   private void nextFrame(){
     update();
-    // detectCollision();
+    detectCollision();
     render();
   }
 
@@ -67,7 +68,14 @@ public class Scene{
 
   private void detectCollision(){
     for(Component component : components){
-
+      if(component.getCollider() != null && component.getCollider().isEnabled()){
+        ArrayList<Collision> collisions = component.getCollider().detectCollision(component,components);
+        System.out.println("Collision count:"+collisions.size());
+        
+        for(Collision collision : collisions){
+          component.onCollision(collision);
+        }
+      }
     }
   }
 

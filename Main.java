@@ -13,14 +13,14 @@ public class Main {
 
     Scene scene = Scene.getInstance();
 
-    Ship ship1 = new Ship();
-    Ship ship2 = new Ship();
+    // Ship ship1 = new Ship();
+    // Ship ship2 = new Ship();
     Ship ship3 = new Ship();
     Ship ship4 = new Ship();
 
 
-    scene.add(ship1);
-    scene.add(ship2);
+    // scene.add(ship1);
+    // scene.add(ship2);
     scene.add(ship3);
     scene.add(ship4);
 
@@ -36,7 +36,7 @@ public class Main {
         {
           try {
             // TIME LOOP FOR MOVING THE X,Y POSITION OF THE COMPONENT
-            ship2.move(4,4);
+            // ship2.move(4,4);
             ship3.move(1,0);
             ship4.move(0,1);
 
