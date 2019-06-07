@@ -27,6 +27,10 @@ public class Scene{
     return instance;
   }
 
+  public static Screen getScreenInstance() {
+    return screen;
+  }
+
   public int nextId(){
     return ++lastId;
   }
@@ -81,7 +85,7 @@ public class Scene{
   }
 
   public JFrame getWindow(){
-    return this.screen.getWindow();
+    return getScreenInstance().getWindow();
   }
 
   public void start(){
