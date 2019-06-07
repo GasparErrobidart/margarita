@@ -7,11 +7,15 @@ import java.util.Map;
 
 public class KeyAsigner implements KeyListener{
     
-    private Map<String,KeyFunction> map = null;
+    private Map<String,KeyFunction> functionMap = null;
+    private Map<String,Boolean> boolMap = null;
+
     private static final KeyAsigner instance = new KeyAsigner();
+
     
     private KeyAsigner(){
-        map = new HashMap<String,KeyFunction>();
+        functionMap = new HashMap<String,KeyFunction>();
+        boolMap = new HashMap<String,Boolean>();
     }
     
     public static KeyAsigner getInstance(){
@@ -20,9 +24,24 @@ public class KeyAsigner implements KeyListener{
     
     
     public void addControl(String string, KeyFunction function){
-        map.put(string,function);
+        functionMap.put(string,function);
+        boolMap.put(string,false);
     }
     
+    public void executeTrueKeys(){
+
+        boolMap.forEach((k,v)->{
+            if(v == true){
+                if (functionMap.containsKey(k)){
+                    KeyFunction function = functionMap.get(k);
+                    if (function != null){
+                        function.function();
+                    }
+                }
+            }
+        });
+
+    }
     
     
 
@@ -33,22 +52,31 @@ public class KeyAsigner implements KeyListener{
         
         String keyText = ke.getKeyText(keyCode);
         
-        KeyFunction function;
         
-        if (map.containsKey(keyText)){
+        if (boolMap.containsKey(keyText)){
+
+            boolMap.put(keyText,true);
             
-            function = map.get(keyText);
-            
-            if (function != null){
-                function.function();
-            }
         }
     
     }
     
     @Override
-    public void keyTyped(KeyEvent ke) {}
+    public void keyReleased(KeyEvent ke){
+        int keyCode = ke.getKeyCode();
+        
+        String keyText = ke.getKeyText(keyCode);
+        
+        
+        if (boolMap.containsKey(keyText)){
+
+            boolMap.put(keyText,false);
+            
+        }
+    }
+
     @Override
-    public void keyReleased(KeyEvent ke) {}
+    public void keyTyped(KeyEvent ke) {}
+    
     
 }
