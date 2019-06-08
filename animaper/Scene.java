@@ -26,6 +26,20 @@ public class Scene{
     components = new ArrayList<Component>();
   }
 
+  /**
+   * @return the width
+   */
+  public static int getWidth() {
+  	return width;
+  }
+
+  /**
+   * @return the height
+   */
+  public static int getHeight() {
+  	return height;
+  }
+
   public static Scene getInstance() {
     return instance;
   }
@@ -43,6 +57,13 @@ public class Scene{
       component.setId(getInstance());
     }
     components.add(component);
+  }
+
+  /**
+   * @return the fPS
+   */
+  public int getFPS() {
+  	return FPS;
   }
 
   // THIS IS THE MAIN METHOD FOR THIS CLASS

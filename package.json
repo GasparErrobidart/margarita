@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "javac animaper/*.java && javac puppeteer/*.java && javac *.java && java Main"
+    "start": "javac animaper/*.java && javac puppeteer/*.java && javac *.java && java Main",
+    "play:platformer" : "javac animaper/*.java && javac puppeteer/*.java && javac *.java && java demo/platformer/Main"
   },
   "author": "",
   "license": "ISC"
