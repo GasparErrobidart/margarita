@@ -70,8 +70,6 @@ public class Scene{
     for(Component component : components){
       if(component.getCollider() != null && component.getCollider().isEnabled()){
         ArrayList<Collision> collisions = component.getCollider().detectCollision(component,components);
-        System.out.println("Collision count:"+collisions.size());
-        
         for(Collision collision : collisions){
           component.onCollision(collision);
         }
