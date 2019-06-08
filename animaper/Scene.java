@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import javax.swing.JFrame;
 import java.awt.Graphics;
+import java.util.HashMap;
 
 public class Scene{
 
@@ -19,6 +20,7 @@ public class Scene{
   private int lastId = -1;
   private ArrayList<Component> components;
   private int FPS = 24;
+  private HashMap<String,Collision> collisionMap;
 
   private Scene(){
     components = new ArrayList<Component>();
@@ -67,14 +69,57 @@ public class Scene{
   }
 
   private void detectCollision(){
+    HashMap<String,Collision> updatedCollisionMap = new HashMap<String,Collision>();
     for(Component component : components){
       if(component.getCollider() != null && component.getCollider().isEnabled()){
         ArrayList<Collision> collisions = component.getCollider().detectCollision(component,components);
         for(Collision collision : collisions){
-          component.onCollision(collision);
+          Component a = collision.getSelf();
+          Component b = collision.getComponent();
+          // COLLISION ID IS EQUAL TO [Smaller ID + "to" + Bigger ID]
+          String collisionID = a.getId() < b.getId() ? a.getId()+"to"+b.getId() : b.getId()+"to"+a.getId() ;
+          updatedCollisionMap.put(collisionID,collision);
         }
       }
     }
+    emitCollisionEvents(getCollisionMap(),updatedCollisionMap);
+    setCollisionMap(updatedCollisionMap);
+  }
+
+  private void emitCollisionEvents(HashMap<String,Collision> oldMap , HashMap<String,Collision> newMap){
+
+    for (String id : newMap.keySet()) {
+      Collision collision = newMap.get(id);
+      Component a = collision.getSelf();
+      Component b = collision.getComponent();
+      if(oldMap == null || oldMap.get(id) == null){
+        a.onCollisionStart(collision);
+        b.onCollisionStart(collision);
+      }
+      a.onCollision(collision);
+      b.onCollision(collision);
+    }
+
+    if(oldMap != null){
+      for (String id : oldMap.keySet()) {
+        Collision collision = oldMap.get(id);
+        Component a = collision.getSelf();
+        Component b = collision.getComponent();
+        if( newMap.get(id) == null ){
+          a.onCollisionEnd(collision);
+          b.onCollisionEnd(collision);
+        }
+      }
+    }
+
+  }
+
+  private HashMap<String,Collision> getCollisionMap(){
+    return this.collisionMap;
+  }
+
+  private void setCollisionMap(HashMap<String,Collision> updatedCollisionMap){
+    this.collisionMap = updatedCollisionMap;
   }
 
   private void render(){

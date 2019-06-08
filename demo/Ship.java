@@ -31,5 +31,15 @@ public class Ship extends AnimatedComponent {
     System.out.println("Chocando");
   }
 
+  @Override
+  public void onCollisionStart(Collision collision){
+    System.out.println("Collision start");
+  }
+
+  @Override
+  public void onCollisionEnd(Collision collision){
+    System.out.println("Collision end");
+  }
+
 
 }

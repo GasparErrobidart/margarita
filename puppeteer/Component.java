@@ -33,7 +33,15 @@ public class Component extends Renderer{
   }
 
   public void onCollision(Collision collision){
-    
+
+  }
+
+  public void onCollisionStart(Collision collision){
+
+  }
+
+  public void onCollisionEnd(Collision collision){
+
   }
 
   /**
