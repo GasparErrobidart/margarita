@@ -10,6 +10,7 @@ public class Ground extends Component {
     loadBitmap(System.getProperty("user.dir")+"/demo/platformer/images/ground.png");
     // SET COMPONENT FRAME SIZE
     setSize(2000,100);
+    setTag("ground");
     setPosition(new Position(0, scene.getHeight() - getHeight() ));
     setCollider(new BoxCollider( getWidth(),getHeight() ));
   }

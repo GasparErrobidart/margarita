@@ -19,4 +19,8 @@ public class Collision{
     return this.self;
   };
 
+  public Component getOther(int id){
+    return id != self.getId() ? getSelf() : getComponent();
+  }
+
 }

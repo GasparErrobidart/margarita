@@ -13,6 +13,7 @@ public class Component extends Renderer{
   private int frameOffsetY;
   private int id = -1;
   private BoxCollider collider;
+  private String tag;
 
   public Component(){
     setFrameOffset(0,0);
@@ -23,6 +24,25 @@ public class Component extends Renderer{
    */
   public BoxCollider getCollider() {
   	return collider;
+  }
+
+  /**
+   * @return the tag
+   */
+  public String getTag() {
+  	return tag;
+  }
+
+  public void setTag(String tag){
+    this.tag = tag;
+  }
+
+  public int getBottom(){
+    return getPosition().getY() + getHeight();
+  }
+
+  public int getRight(){
+    return getPosition().getX() + getWidth();
   }
 
   /**

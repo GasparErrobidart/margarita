@@ -90,7 +90,7 @@ public class Main {
     asigner.addControl("L",p2MoveRight);
     asigner.addControl("I",p2MoveUp);
     asigner.addControl("K",p2MoveDown);
-    
+
 
 
 
@@ -101,7 +101,7 @@ public class Main {
     scene.add(ship3);
     scene.add(ship4);
 
-    
+
 
     window.addKeyListener(asigner);
     scene.start();

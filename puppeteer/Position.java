@@ -12,6 +12,12 @@ public class Position{
     setZ(z);
   }
 
+  public Position(int x,int y){
+    setX(x);
+    setY(y);
+    setZ(0);
+  }
+
   public int getX(){
     return xPos;
   }

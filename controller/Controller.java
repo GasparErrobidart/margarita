@@ -1,17 +1,24 @@
+package controller;
+import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import animaper.Scene;
 
 public class Controller {
 
     private Timer interval;
     private Scene scene;
-    private KeyAsigner asigner;
+    private KeyAsigner assigner;
 
     public Controller(){
       setScene(Scene.getInstance());
+      this.assigner = KeyAsigner.getInstance();
+      scene.getWindow().addKeyListener(getAssigner());
 
       interval = new Timer (1000/getScene().getFPS(), new ActionListener () {
          public void actionPerformed(ActionEvent ev) {
             try {
-              asigner.executeTrueKeys();
+              getAssigner().executeTrueKeys();
             } catch(Exception e) {
               e.printStackTrace();
             }
@@ -19,18 +26,18 @@ public class Controller {
       });
 
       interval.start();
-      scene.getWindow().addKeyListener(getAssigner());
     }
 
+
     /**
-     * @return the asigner
+     * @return the assigner
      */
-    private KeyAsigner getAsigner() {
-    	return asigner;
+    private KeyAsigner getAssigner() {
+    	return assigner;
     }
 
     public void assign(String key, KeyFunction function){
-      asigner.addControl("A",function);
+      assigner.addControl(key,function);
     }
 
     private Scene getScene(){
