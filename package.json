@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile" : "javac animaper/*.java && javac puppeteer/*.java && javac controller/*.java && javac *.java",
+    "compile" : "node compile",
+    "compile:manual" : "javac animaper/*.java && javac puppeteer/*.java && javac controller/*.java && javac *.java",
     "compile:platformer" : "javac demo/platformer/*.java",
     "start": "npm run compile && java Main",
-    "play:platformer" : "npm run compile && npm run compile:platformer && java demo/platformer/Main"
+    "play:platformer" : "npm run compile && node run-platformer",
+    "play:main" : "npm run compile && node run-main"
   },
   "author": "",
   "license": "ISC"
