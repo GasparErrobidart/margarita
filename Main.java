@@ -8,16 +8,11 @@ import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 import java.awt.Graphics;
-import org.json.simple.JSONObject;
 
 public class Main {
 
   public static void main (String [] args) {
-
-    JSONObject obj = new JSONObject();
-    obj.put("name", "mkyong.com");
-    obj.put("age", 100);
-    System.out.println(obj);
+    
     //
     // Scene scene = Scene.getInstance();
     //
