@@ -9,5 +9,8 @@ public interface Collider{
   public boolean isEnabled();
   public int getWidth();
   public int getHeight();
+  public void setSize(int width, int height);
+  public Position getPosition();
+  public void setPosition(Position position);
 
 }
