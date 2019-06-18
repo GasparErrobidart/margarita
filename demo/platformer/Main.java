@@ -49,7 +49,7 @@ public class Main {
           player.getTimeline().first();
         }
       }
-    });
+    },true);
 
     controls.assign("A",new KeyFunction(){
       public void function(){
@@ -60,13 +60,13 @@ public class Main {
           player.getTimeline().first();
         }
       }
-    });
+    },true);
 
     controls.assign("W",new KeyFunction(){
       public void function(){
         player.startJump();
       }
-    });
+    },false);
 
     scene.start();
 

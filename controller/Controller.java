@@ -36,8 +36,8 @@ public class Controller {
     	return assigner;
     }
 
-    public void assign(String key, KeyFunction function){
-      assigner.addControl(key,function);
+    public void assign(String key, KeyFunction function,Boolean bool){
+      assigner.addControl(key,function,bool);
     }
 
     private Scene getScene(){
