@@ -20,15 +20,12 @@ public class Main {
   public static void main (String [] args)  throws IOException,ParseException{
     
     Configurator a = Configurator.getInstance();
-    try{
-       a.setFPS(12301230);
-    }
-    catch(IOException e){
-        e.printStackTrace();
-    }
-    catch(ParseException e){
-        e.printStackTrace();
-    }
+    a.initiateFPSfromJson();
+    a.setFPS(60);
+    Scene scene = Scene.getInstance();
+
+    System.out.print(a.getFPS() + "\n");
+    System.out.print(scene.getFPS() + "\n");
 
     //
     // Scene scene = Scene.getInstance();

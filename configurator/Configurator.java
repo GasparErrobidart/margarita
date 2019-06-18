@@ -14,13 +14,26 @@ public class Configurator {
     private static final Configurator instance = new Configurator();
     private String path = "configuration.json";
 
+    private int FPS = 0;
+
+    
     private Configurator(){}
 
     public static Configurator getInstance(){
         return instance;
     }
 
-    public void setFPS(int FPS) throws IOException,ParseException {
+    public int getFPS(){
+        return FPS;
+    }
+
+    public void setFPS(int fps){
+        FPS = fps;
+    }
+
+    
+
+    public void exportToFile() throws IOException,ParseException {
 
         try {
         
@@ -56,9 +69,7 @@ public class Configurator {
 
     }
 
-    public int getFPS() throws IOException,ParseException{
-
-        Integer FPS = 0;
+    public void initiateFPSfromJson() throws IOException,ParseException{
 
         try (FileReader reader = new FileReader(path)){
 
@@ -78,8 +89,6 @@ public class Configurator {
         catch(ParseException e){
             e.printStackTrace();
         }
-
-        return FPS;
     }
     
 }
