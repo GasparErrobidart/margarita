@@ -9,10 +9,27 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 import java.awt.Graphics;
 
+import configurator.*;
+import java.io.IOException;
+import org.json.simple.parser.ParseException;
+
 public class Main {
 
-  public static void main (String [] args) {
+
+  
+  public static void main (String [] args)  throws IOException,ParseException{
     
+    Configurator a = Configurator.getInstance();
+    try{
+       a.setFPS(12301230);
+    }
+    catch(IOException e){
+        e.printStackTrace();
+    }
+    catch(ParseException e){
+        e.printStackTrace();
+    }
+
     //
     // Scene scene = Scene.getInstance();
     //
