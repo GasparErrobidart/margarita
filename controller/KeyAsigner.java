@@ -27,17 +27,29 @@ public class KeyAsigner implements KeyListener{
     //true for keypressed, false for keyreleased
     public void addControl(String string, KeyFunction function, Boolean bool){
         HashMap<String,KeyFunction> functionMap = new HashMap<>();
-        functionMap.put("KeyPressed",new KeyFunction(){public void function(){}});
-        functionMap.put("KeyReleased",new KeyFunction(){public void function(){}});
-        if (bool == true){
-            functionMap.replace("KeyPressed",function);
+        if (keyFunctionsMap.containsKey(string)){
+            functionMap.putAll(keyFunctionsMap.get(string));
+            if (bool == true){
+                functionMap.replace("KeyPressed",function);
+            }
+            else{
+                functionMap.replace("KeyReleased",function);
+            }
+            keyFunctionsMap.replace(string,functionMap);
         }
         else{
-            functionMap.replace("KeyReleased",function);
+            functionMap.put("KeyPressed",new KeyFunction(){public void function(){}});
+            functionMap.put("KeyReleased",new KeyFunction(){public void function(){}});
+            if (bool == true){
+                functionMap.replace("KeyPressed",function);
+            }
+            else{
+                functionMap.replace("KeyReleased",function);
+            }
+            keyFunctionsMap.put(string,functionMap);
+            boolMap.put(string,false);
+            releasedMap.put(string,false);
         }
-        keyFunctionsMap.put(string,functionMap);
-        boolMap.put(string,false);
-        releasedMap.put(string,false);
     }
     
     public void executeTrueKeys(){

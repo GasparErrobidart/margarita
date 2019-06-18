@@ -67,6 +67,16 @@ public class Main {
         player.startJump();
       }
     },false);
+    controls.assign("W",new KeyFunction(){
+      public void function(){
+        player.move(-1,0);
+        player.setHorizontalFlip(true);
+        if( player.getcurrentTimelineName() != "run" && player.getLanded() ){
+          player.setCurrentTimeline("run");
+          player.getTimeline().first();
+        }
+      }
+    },true);
 
     scene.start();
 
