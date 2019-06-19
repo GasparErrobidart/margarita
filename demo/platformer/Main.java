@@ -2,12 +2,20 @@ package demo.platformer;
 import animaper.*;
 import puppeteer.*;
 import controller.*;
+import configurator.*;
+import java.io.IOException;
+import org.json.simple.parser.ParseException;
 
 public class Main {
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException,ParseException{
 
+    Configurator config = Configurator.getInstance();
+    config.initiateFPSfromJson();
+    config.setFPS(60);
+    
     Scene scene = Scene.getInstance();
+
     Ground ground = new Ground();
     Ground ground2 = new Ground();
     Ground ground3 = new Ground();
