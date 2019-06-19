@@ -35,7 +35,6 @@ public class Main {
     scene.add(player);
 
     Controller controls = Controller.getInstance();
-    Controller controls2 = Controller.getInstance();
 
 
     // if(y != 0 && getcurrentTimelineName() != "idle"){
@@ -89,13 +88,13 @@ public class Main {
       }
     },false);
 
-    controls2.assign("W",new KeyFunction(){
+    controls.assign("W",new KeyFunction(){
       public void function(){
         player.startJump();
       }
     },true);
 
-    controls2.assign("W",new KeyFunction(){
+    controls.assign("W",new KeyFunction(){
       public void function(){
         player.stopJump();
       }
