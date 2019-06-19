@@ -51,6 +51,15 @@ public class Main {
       }
     },true);
 
+    controls.assign("D",new KeyFunction(){
+      public void function(){
+        if( player.getcurrentTimelineName() == "run" && player.getLanded()){
+          player.setCurrentTimeline("idle");
+          player.getTimeline().first();
+        }
+      }
+    },false);
+
     controls.assign("A",new KeyFunction(){
       public void function(){
         player.move(-1,0);
@@ -61,6 +70,15 @@ public class Main {
         }
       }
     },true);
+
+    controls.assign("A",new KeyFunction(){
+      public void function(){
+        if( player.getcurrentTimelineName() == "run" && player.getLanded()){
+          player.setCurrentTimeline("idle");
+          player.getTimeline().first();
+        }
+      }
+    },false);
 
     controls.assign("W",new KeyFunction(){
       public void function(){
