@@ -9,8 +9,9 @@ public class Controller {
     private Timer interval;
     private Scene scene;
     private KeyAsigner assigner;
+    private static final Controller instance = new Controller();
 
-    public Controller(){
+    private Controller(){
       setScene(Scene.getInstance());
       this.assigner = KeyAsigner.getInstance();
       scene.getWindow().addKeyListener(getAssigner());
@@ -28,6 +29,12 @@ public class Controller {
       interval.start();
     }
 
+     /**
+     * @return the instance
+     */
+    public static Controller getInstance() {
+    	return instance;
+    }
 
     /**
      * @return the assigner
