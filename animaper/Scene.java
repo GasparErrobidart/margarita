@@ -9,7 +9,7 @@ import javax.swing.Timer;
 import javax.swing.JFrame;
 import java.awt.Graphics;
 import java.util.HashMap;
-import configurator.*;
+// import configurator.*;
 
 public class Scene{
 
@@ -17,13 +17,13 @@ public class Scene{
   private static final int height = 600;
   private static final Scene instance = new Scene();
   private static final Screen screen = new Screen(width,height);
-  private Configurator config = Configurator.getInstance();
+  // private Configurator config = Configurator.getInstance();
   private boolean paused = false;
   private int lastId = -1;
   private ArrayList<Component> components;
-  private int FPS = config.getFPS();
+  private int FPS = 24;
   private HashMap<String,Collision> collisionMap;
-  
+
   private Scene(){
     components = new ArrayList<Component>();
   }
