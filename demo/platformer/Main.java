@@ -28,18 +28,6 @@ public class Main {
 
     Controller controls = new Controller();
 
-
-    // if(y != 0 && getcurrentTimelineName() != "idle"){
-    //   this.setCurrentTimeline("idle");
-    //   this.getTimeline().first();
-    // }else if( x != 0 && getcurrentTimelineName() != "run"){
-    //   this.setCurrentTimeline("run");
-    //   this.getTimeline().first();
-    // }else if (getcurrentTimelineName() != "idle"){
-    //   this.setCurrentTimeline("idle");
-    //   this.getTimeline().first();
-    // }
-
     controls.assign("D",new KeyFunction(){
       public void function(){
         player.move(1,0);

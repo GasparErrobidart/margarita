@@ -86,12 +86,16 @@ public class Player extends AnimatedComponent {
     this.setCurrentTimeline("idle");
   }
 
+
+
   /**
    * @return the speed
    */
   public int getSpeed() {
   	return speed;
   }
+
+
 
   @Override
   public void move(int x, int y){
