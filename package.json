@@ -9,7 +9,8 @@
     "compile:platformer" : "javac demo/platformer/*.java",
     "start": "npm run compile && java Main",
     "play:platformer" : "npm run compile && node run-platformer",
-    "play:main" : "npm run compile && node run-main"
+    "play:main" : "npm run compile && node run-main",
+    "run:config" : "npm run compile && node run-config"
   },
   "author": "",
   "license": "ISC"

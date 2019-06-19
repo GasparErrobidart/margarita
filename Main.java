@@ -8,16 +8,25 @@ import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 import java.awt.Graphics;
-import org.json.simple.JSONObject;
+
+import configurator.*;
+import java.io.IOException;
+import org.json.simple.parser.ParseException;
 
 public class Main {
 
-  public static void main (String [] args) {
 
-    JSONObject obj = new JSONObject();
-    obj.put("name", "mkyong.com");
-    obj.put("age", 100);
-    System.out.println(obj);
+  
+  public static void main (String [] args)  throws IOException,ParseException{
+    
+    Configurator a = Configurator.getInstance();
+    a.initiateFPSfromJson();
+    a.setFPS(60);
+    Scene scene = Scene.getInstance();
+
+    System.out.print(a.getFPS() + "\n");
+    System.out.print(scene.getFPS() + "\n");
+
     //
     // Scene scene = Scene.getInstance();
     //
