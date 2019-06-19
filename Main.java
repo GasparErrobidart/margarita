@@ -17,15 +17,7 @@ public class Main {
 
 
   
-  public static void main (String [] args)  throws IOException,ParseException{
-    
-    Configurator a = Configurator.getInstance();
-    a.initiateFPSfromJson();
-    a.setFPS(60);
-    Scene scene = Scene.getInstance();
-
-    System.out.print(a.getFPS() + "\n");
-    System.out.print(scene.getFPS() + "\n");
+  public static void main (String [] args){
 
     //
     // Scene scene = Scene.getInstance();
