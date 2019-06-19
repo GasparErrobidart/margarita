@@ -12,8 +12,7 @@ public class Main {
 
     Configurator config = Configurator.getInstance();
     config.initiateFPSfromJson();
-    config.setFPS(60);
-    
+
     Scene scene = Scene.getInstance();
 
     Ground ground = new Ground();
