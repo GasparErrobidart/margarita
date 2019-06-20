@@ -15,7 +15,7 @@ public class Doughnut extends Component {
   private int floatingDistance = 0;
   private int floatingDirection = 1;
   private Random rand = new Random();
-
+  private int pointsGiven = 2;
 
   public Doughnut(){
     this.scene = Scene.getInstance();
@@ -31,9 +31,11 @@ public class Doughnut extends Component {
   @Override
   public void onCollisionStart(Collision collision){
     Component component = collision.getOther(getId());
+    ScoreCounter scoreCounter = ScoreCounter.getInstance();
     if(component.getTag() == "player"){
       this.playSound(loadedCoinSound);
       scene.remove(this);
+      scoreCounter.addPoints(pointsGiven);
     }
   }
 
