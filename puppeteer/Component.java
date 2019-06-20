@@ -19,6 +19,9 @@ public class Component extends Renderer {
   private String tag;
 
   public Component() {
+    BoxCollider defaultCollider = new BoxCollider(0,0);
+    defaultCollider.disable();
+    setCollider(defaultCollider);
     setFrameOffset(0, 0);
   }
 

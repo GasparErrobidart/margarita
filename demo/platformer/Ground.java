@@ -9,9 +9,9 @@ public class Ground extends Component {
     // LOAD SPRITE SHEET
     loadBitmap(System.getProperty("user.dir")+"/demo/platformer/images/grass.jpg");
     // SET COMPONENT FRAME SIZE
-    setSize(626,100);
+    setSize(800,100);
     setTag("ground");
-    setPosition(new Position(0, scene.getHeight() - getHeight() ));
+    setPosition(new Position(0,scene.getHeight()-20));
     setCollider(new BoxCollider( getWidth(),getHeight() ));
   }
 

@@ -13,7 +13,7 @@ import configurator.*;
 
 public class Scene{
 
-  private static final int width = 600;
+  private static final int width = 800;
   private static final int height = 600;
   private static final Scene instance = new Scene();
   private static final Screen screen = new Screen(width,height);
