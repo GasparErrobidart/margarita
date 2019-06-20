@@ -28,7 +28,6 @@ public class DoughnutGenerator{
       Integer y = rand.nextInt(500)+100-doughnut.getHeight();
 
       doughnut.setPosition(new Position(x,y));
-      doughnut.getCollider().setSize(66,54);
       doughnuts.add(doughnut);
       ;
     }
