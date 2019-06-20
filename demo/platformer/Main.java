@@ -29,6 +29,9 @@ public class Main {
     Background background = new Background();
     Player player = new Player();
 
+    String themeSongPath = System.getProperty("user.dir")+"/demo/platformer/sounds/themeSong.wav";
+    ThemeSongPlayer themePlayer = ThemeSongPlayer.getInstance();
+
     DoughnutGenerator doughGen = new DoughnutGenerator();
 
     ground2.setPosition(new Position(400,150));
@@ -57,6 +60,8 @@ public class Main {
     // scene.add(groundDec3);
     doughGen.addDoughnutsToScene();
     scene.add(player);
+
+    themePlayer.setUpPlayer(themeSongPath);
 
     Controller controls = Controller.getInstance();
 
@@ -112,6 +117,7 @@ public class Main {
       }
     },false);
 
+    themePlayer.playSound();
     scene.start();
 
   }
