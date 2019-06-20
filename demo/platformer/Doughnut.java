@@ -4,6 +4,7 @@ import puppeteer.*;
 import java.io.*;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import java.util.Random;
 
 public class Doughnut extends Component {
 
@@ -11,8 +12,9 @@ public class Doughnut extends Component {
   private File coinSound = new File(coinSoundPath);
   private Clip loadedCoinSound;
   private Scene scene;
-  private int floatingDistance;
+  private int floatingDistance = 0;
   private int floatingDirection = 1;
+  private Random rand = new Random();
 
 
   public Doughnut(){
@@ -21,6 +23,7 @@ public class Doughnut extends Component {
     loadBitmap(System.getProperty("user.dir")+"/demo/platformer/images/doughnut.png");
     setSizeFromBitmap();
     setTag("apple");
+    addFloatingDistance( rand.nextInt(10) );
     setCollider(new BoxCollider( getWidth(),getHeight() ));
     loadedCoinSound = loadSound(coinSound);
   }
