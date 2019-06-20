@@ -10,18 +10,20 @@ By github/GasparErrobidart && github/FrancoDavidMarsilidelGrosso
 
 
 
-Introduction
-			
+##Introduction
+
 			Let’s Have Some Fun !
 
 Welcome to Margarita 2D game engine ! From creating as many components as you like to be interacting in the game, making a stop in having a native collider for said components to customizing your controllers on the spot in a really easy and intuitive way.
 This is our project and we’re happy to share it with you, so let’s get going !
 
+##UML
+
+![UML diagram](/UML.png?raw=true "UML diagram")
 
 
 
-
-Quick Start
+##Quick Start
 
       Just cut to the chase.
 
@@ -37,11 +39,11 @@ Configurator
 Animaper contains everything related to the “Scene”. Actually, it has a class called that way that’s a singleton component that concentrates the window where the game is taking place, the components in said game and the interaction between those, as well as the behaviour of the game, etc, so you’ll need to import it to your project.
 
 
-Creating The Scene
+##Creating The Scene
 
 			I’m not anxious, you’re anxious.
 
-You can get an instance of the scene this way : 
+You can get an instance of the scene this way :
 
 ```java
 Scene scene = Scene.getInstance();
@@ -49,11 +51,11 @@ Scene scene = Scene.getInstance();
 
 As it’s a singleton , it will always return the same instance, independently of the environment where it’s called from.
 
-Creating Components
+##Creating Components
 
 			Am I playing God right now?
 
-Now, create as many classes to introduce to the scene as you like, always remembering that those that will be static should extend the class Component, and the ones with animation such as moving, should extend the class Animated Component. (They’re all part of the puppeteer package, so make sure to import it !). Just for the purpose of giving this example, we’ve created some ground components and a player class, like this : 
+Now, create as many classes to introduce to the scene as you like, always remembering that those that will be static should extend the class Component, and the ones with animation such as moving, should extend the class Animated Component. (They’re all part of the puppeteer package, so make sure to import it !). Just for the purpose of giving this example, we’ve created some ground components and a player class, like this :
 
 
 ```java
@@ -243,11 +245,11 @@ public class Player extends AnimatedComponent {
 As you can see you can set sizes, tags, positions and colliders from the component itself, as well as using a timeline to animate the component and give custom responses when the component starts AND finish (yes, they’re separate events) colliding.
 
 
-ASSIGNING CONTROLS TO KEYS
+##ASSIGNING CONTROLS TO KEYS
 
 			No, you can’t assign a control to make her love you.
-      
-      
+
+
 
 Now, all you’ve got to do is import the controller package and like the scene, the controller is as well a singleton, so you’ll be able to assign functions to the same keyboard independently of where you’ve instantiated it .
 You can do it like this :
@@ -285,7 +287,7 @@ controls.assign("W",new KeyFunction(){
 ```
 
 
-Setting Up The Configuration
+##Setting Up The Configuration
 
 					C’mon man already
 
@@ -299,7 +301,7 @@ And remember, handling files and Json Objects may throw an Exception, so you nee
 public static void main (String [] args) throws IOException,ParseException
 ```
 
-You can do it all like this : 
+You can do it all like this :
 
 ```java
 Configurator config = Configurator.getInstance();
@@ -308,7 +310,7 @@ Configurator config = Configurator.getInstance();
 ```
 
 
-Make Everything Start
+##Make Everything Start
 
 			This is like pressing a giant red button
 
@@ -319,4 +321,3 @@ Is anything else i need to know?
 	These titles are not getting any shorter, aren’t they?
 
 Yes, there’s more things you can do with this engine, like listening to mouse buttons, manage the collider hitbox, even giving your components specific responses when their ID’s or tags meet ! We’re sure your wisdom hungry spirit will learn it all and even be brave enough to modify them and change the functionality to match your will !
-
