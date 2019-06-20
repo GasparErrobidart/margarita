@@ -7,23 +7,23 @@ import java.util.Map;
 
 public class KeyAsigner implements KeyListener{
 
-    private Map<String,HashMap<String,KeyFunction>> keyFunctionsMap = null; 
+    private Map<String,HashMap<String,KeyFunction>> keyFunctionsMap = null;
     private Map<String,Boolean> boolMap = null;
     private Map<String,Boolean> releasedMap = null;
-    
+
     private static final KeyAsigner instance = new KeyAsigner();
 
-    
+
     private KeyAsigner(){
         keyFunctionsMap = new HashMap<String,HashMap<String,KeyFunction>>();
         boolMap = new HashMap<String,Boolean>();
         releasedMap = new HashMap<String,Boolean>();
     }
-    
+
     public static KeyAsigner getInstance(){
         return instance;
     }
-    
+
     //true for keypressed, false for keyreleased
     public void addControl(String string, KeyFunction function, Boolean bool){
         HashMap<String,KeyFunction> functionMap = new HashMap<>();
@@ -51,7 +51,7 @@ public class KeyAsigner implements KeyListener{
             releasedMap.put(string,false);
         }
     }
-    
+
     public void executeTrueKeys(){
 
         boolMap.forEach((k,v)->{
@@ -79,40 +79,40 @@ public class KeyAsigner implements KeyListener{
                     }
                 }
             }
-            
-            
+
+
 
         });
 
         releasedMap.putAll(boolMap);
 
     }
-    
-    
+
+
 
     @Override
     public void keyPressed(KeyEvent ke) {
-        
+
         int keyCode = ke.getKeyCode();
-        
+
         String keyText = ke.getKeyText(keyCode);
 
         if (boolMap.containsKey(keyText)){
 
             boolMap.replace(keyText,true);
-            
+
         }
 
     }
-    
+
     @Override
     public void keyReleased(KeyEvent ke){
-        
+
         int keyCode = ke.getKeyCode();
-        
+
         String keyText = ke.getKeyText(keyCode);
-        
-        
+
+
         if (boolMap.containsKey(keyText)){
 
             boolMap.replace(keyText,false);

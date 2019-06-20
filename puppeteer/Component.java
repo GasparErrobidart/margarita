@@ -45,6 +45,14 @@ public class Component extends Renderer{
     return getPosition().getX() + getWidth();
   }
 
+  public Box getBox(){
+    int top = getPosition().getY();
+    int right = getRight();
+    int bottom = getBottom();
+    int left = getPosition().getX();
+    return new Box(top,right,bottom,left);
+  }
+
   /**
    * @param collider the collider to set
    */

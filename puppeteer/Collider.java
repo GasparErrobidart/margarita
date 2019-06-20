@@ -12,5 +12,6 @@ public interface Collider{
   public void setSize(int width, int height);
   public Position getPosition();
   public void setPosition(Position position);
+  public Box getBox(Box ComponentBox);
 
 }

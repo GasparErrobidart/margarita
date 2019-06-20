@@ -30,6 +30,14 @@ public class BoxCollider implements Collider{
   	return position;
   }
 
+  public Box getBox(Box componentBox){
+    int top     = componentBox.getTop()  + getPosition().getY();
+    int left    = componentBox.getLeft() + getPosition().getX();
+    int right   = left + getWidth();
+    int bottom  = top + getHeight();
+    return new Box(top,right,bottom,left);
+  }
+
   public ArrayList<Collision> detectCollision(Component self, ArrayList<Component> components){
     ArrayList<Collision> collisionList = new ArrayList<Collision>();
     Component a = self;

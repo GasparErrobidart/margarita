@@ -2,6 +2,10 @@ package demo.platformer;
 import animaper.*;
 import puppeteer.*;
 
+import java.awt.image.BufferedImage;
+import java.awt.Graphics;
+import java.awt.Color;
+
 
 public class Player extends AnimatedComponent {
 
@@ -143,6 +147,29 @@ public class Player extends AnimatedComponent {
   }
 
   @Override
+  public void onCollision(Collision collision){
+
+    Component component = collision.getOther(getId());
+    Box boxA = getCollider().getBox(getBox());
+    Box boxB = component.getCollider().getBox(component.getBox());
+    if(component.getTag() == "ground"){
+      // DETECT IF COLLISION IS BENEATH
+
+      if(
+        boxA.getBottom()  >= boxB.getBottom() &&
+        boxA.getRight()  > boxB.getLeft() &&
+        boxA.getLeft()  < boxB.getRight()
+      ){
+        setPosition(new Position(
+          getPosition().getX(),
+          getPosition().getY()-(boxA.getBottom()-boxB.getTop())
+        ));
+      }
+
+    }
+  }
+
+  @Override
   public void onCollisionEnd(Collision collision){
     Component component = collision.getOther(getId());
     if(component.getTag() == "ground"){
@@ -156,6 +183,17 @@ public class Player extends AnimatedComponent {
 
   public void stopJump(){
     this.jumping = false;
+  }
+
+  @Override
+  public BufferedImage render(){
+    BufferedImage colliderImg = new BufferedImage(getCollider().getWidth(),getCollider().getHeight(),BufferedImage.TYPE_INT_RGB);
+    BufferedImage img = new BufferedImage(getWidth(),getHeight(),BufferedImage.TYPE_INT_RGB);
+    Graphics g = img.getGraphics();
+    g.setColor ( new Color (100, 0, 0 ) );
+    g.fillRect(0, 0, getWidth(),getHeight());
+    g.drawImage(colliderImg, getCollider().getPosition().getX(), getCollider().getPosition().getY(), null);
+    return img;
   }
 
 }
