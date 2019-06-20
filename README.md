@@ -10,20 +10,20 @@ By github/GasparErrobidart && github/FrancoDavidMarsilidelGrosso
 
 
 
-##Introduction
+## Introduction
 
 			Let’s Have Some Fun !
 
 Welcome to Margarita 2D game engine ! From creating as many components as you like to be interacting in the game, making a stop in having a native collider for said components to customizing your controllers on the spot in a really easy and intuitive way.
 This is our project and we’re happy to share it with you, so let’s get going !
 
-##UML
+## UML
 
 ![UML diagram](/UML.png?raw=true "UML diagram")
 
 
 
-##Quick Start
+## Quick Start
 
       Just cut to the chase.
 
@@ -39,7 +39,7 @@ Configurator
 Animaper contains everything related to the “Scene”. Actually, it has a class called that way that’s a singleton component that concentrates the window where the game is taking place, the components in said game and the interaction between those, as well as the behaviour of the game, etc, so you’ll need to import it to your project.
 
 
-##Creating The Scene
+## Creating The Scene
 
 			I’m not anxious, you’re anxious.
 
@@ -51,7 +51,7 @@ Scene scene = Scene.getInstance();
 
 As it’s a singleton , it will always return the same instance, independently of the environment where it’s called from.
 
-##Creating Components
+## Creating Components
 
 			Am I playing God right now?
 
@@ -245,7 +245,7 @@ public class Player extends AnimatedComponent {
 As you can see you can set sizes, tags, positions and colliders from the component itself, as well as using a timeline to animate the component and give custom responses when the component starts AND finish (yes, they’re separate events) colliding.
 
 
-##ASSIGNING CONTROLS TO KEYS
+## ASSIGNING CONTROLS TO KEYS
 
 			No, you can’t assign a control to make her love you.
 
@@ -287,7 +287,7 @@ controls.assign("W",new KeyFunction(){
 ```
 
 
-##Setting Up The Configuration
+## Setting Up The Configuration
 
 					C’mon man already
 
@@ -310,7 +310,7 @@ Configurator config = Configurator.getInstance();
 ```
 
 
-##Make Everything Start
+## Make Everything Start
 
 			This is like pressing a giant red button
 
