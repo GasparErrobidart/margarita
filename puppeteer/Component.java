@@ -164,7 +164,7 @@ public class Component extends Renderer {
 
   public void playSound(Clip clip) {
     if(clip != null){
-      clip.start();      
+      clip.start();
     }
   }
 
@@ -172,7 +172,7 @@ public class Component extends Renderer {
     Clip clip;
     try{
       clip = AudioSystem.getClip();
-      clip.open(AudioSystem.getAudioInputStream(Sound));      
+      clip.open(AudioSystem.getAudioInputStream(Sound));
     }
     catch(Exception e){
       e.printStackTrace();
