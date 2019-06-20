@@ -40,17 +40,19 @@ public class BoxCollider implements Collider{
 
   public ArrayList<Collision> detectCollision(Component self, ArrayList<Component> components){
     ArrayList<Collision> collisionList = new ArrayList<Collision>();
+    Box aBox = getBox(self.getBox());
     Component a = self;
-    Collider aCol = self.getCollider();
+    // Collider aCol = self.getCollider();
     for( Component b : components){
-      Collider bCol = b.getCollider();
+      Box bBox = b.getCollider().getBox(b.getBox());
+      // Collider bCol = b.getCollider();
       if(
         // a.getPosition().getX() != b.getPosition().getX() + bCol.getPosition().getX()
          a.getId() != b.getId() &&
-         a.getPosition().getX() + aCol.getPosition().getX() <= b.getPosition().getX() + bCol.getPosition().getX() + bCol.getWidth() &&
-         a.getPosition().getX() + aCol.getPosition().getX() + aCol.getWidth() >= b.getPosition().getX() + bCol.getPosition().getX() &&
-         a.getPosition().getY() + aCol.getPosition().getY() <= b.getPosition().getY() + bCol.getPosition().getY() + bCol.getHeight() &&
-         aCol.getHeight() + a.getPosition().getY() + aCol.getPosition().getY() >= b.getPosition().getY() + bCol.getPosition().getY()
+         aBox.getLeft() <= bBox.getRight() &&
+         aBox.getRight() >= bBox.getLeft() &&
+         aBox.getTop() <= bBox.getBottom() &&
+         aBox.getBottom() >= bBox.getTop()
          )
       {
          collisionList.add(new Collision(a,b));

@@ -23,7 +23,7 @@ public class Player extends AnimatedComponent {
     // SET COMPONENT FRAME SIZE
     setSize(153,150);
     setTag("player");
-    setPosition( new Position(10,10) );
+    setPosition( new Position(10,350) );
     setCollider(new BoxCollider( 62, 126 ));
     getCollider().setPosition(new Position(39,14));
     // DEFINE TIMELINE FRAMES
@@ -119,7 +119,7 @@ public class Player extends AnimatedComponent {
 
   @Override
   public void update(){
-    int gravity = 15;
+    int gravity = 1;
     if(!this.landed){
       if( getcurrentTimelineName() != "jump"){
         this.setCurrentTimeline("jump");
@@ -153,19 +153,29 @@ public class Player extends AnimatedComponent {
     Component component = collision.getOther(getId());
     Box boxA = getCollider().getBox(getBox());
     Box boxB = component.getCollider().getBox(component.getBox());
-    if(component.getTag() == "ground"){
+    if(component.getTag().equals("ground")){
       // DETECT IF COLLISION IS BENEATH
-
       if(
-        boxA.getBottom()  >= boxB.getBottom() &&
-        boxA.getRight()  > boxB.getLeft() &&
-        boxA.getLeft()  < boxB.getRight()
+        boxA.getBottom() >= boxB.getTop()
       ){
+
         setPosition(new Position(
           getPosition().getX(),
-          getPosition().getY()-(boxA.getBottom()-boxB.getTop())
+          boxB.getTop() - ( getHeight() - (getBox().getBottom() - boxA.getBottom()) )
         ));
       }
+
+      // DETECT IF COLLISION IS ON FRONT
+      // if(
+      //   boxA.getRight()  >= boxB.getRight() &&
+      //   boxA.getBottom()  > boxB.getTop() &&
+      //   boxA.getTop()  < boxB.getBottom()
+      // ){
+      //   setPosition(new Position(
+      //     getPosition().getX()-(boxA.getRight()-boxB.getRight()),
+      //     getPosition().getY()
+      //   ));
+      // }
 
     }
   }
@@ -186,15 +196,18 @@ public class Player extends AnimatedComponent {
     this.jumping = false;
   }
 
-  @Override
-  public BufferedImage render(){
-    BufferedImage colliderImg = new BufferedImage(getCollider().getWidth(),getCollider().getHeight(),BufferedImage.TYPE_INT_RGB);
-    BufferedImage img = new BufferedImage(getWidth(),getHeight(),BufferedImage.TYPE_INT_RGB);
-    Graphics g = img.getGraphics();
-    g.setColor ( new Color (100, 0, 0 ) );
-    g.fillRect(0, 0, getWidth(),getHeight());
-    g.drawImage(colliderImg, getCollider().getPosition().getX(), getCollider().getPosition().getY(), null);
-    return img;
-  }
+  // RENDER THE BOX COLLIDER AREA, GOOD FOR DEBUG
+
+  // @Override
+  // public BufferedImage render(){
+  //   BufferedImage colliderImg = new BufferedImage(getCollider().getWidth(),getCollider().getHeight(),BufferedImage.TYPE_INT_RGB);
+  //   BufferedImage img = colliderImg;
+  //   img = new BufferedImage(getWidth(),getHeight(),BufferedImage.TYPE_INT_RGB);
+  //   Graphics g = img.getGraphics();
+  //   g.setColor ( new Color (100, 0, 0 ) );
+  //   g.fillRect(0, 0, getWidth(),getHeight());
+  //   g.drawImage(colliderImg, getCollider().getPosition().getX(), getCollider().getPosition().getY(), null);
+  //   return img;
+  // }
 
 }

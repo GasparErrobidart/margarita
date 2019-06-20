@@ -10,7 +10,8 @@
     "start": "npm run compile && java Main",
     "play:platformer" : "npm run compile && node run-platformer",
     "play:main" : "npm run compile && node run-main",
-    "run:config" : "npm run compile && node run-config"
+    "run:config" : "npm run compile && node run-config",
+    "debug:platformer" : "node compile && java -cp \".:/projects/margarita/json-simple.jar\" demo/platformer/Main"
   },
   "author": "",
   "license": "ISC"
