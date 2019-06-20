@@ -175,5 +175,9 @@ public class Scene{
     t.start();
   }
 
+  public void remove(Component component){
+    this.components.remove(component);
+  }
+
 
 }

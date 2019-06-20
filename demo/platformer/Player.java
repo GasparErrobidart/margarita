@@ -22,6 +22,7 @@ public class Player extends AnimatedComponent {
     loadBitmap(System.getProperty("user.dir")+"/demo/platformer/images/animations.png");
     // SET COMPONENT FRAME SIZE
     setSize(153,150);
+    setTag("player");
     setPosition( new Position(10,10) );
     setCollider(new BoxCollider( 62, 126 ));
     getCollider().setPosition(new Position(39,14));

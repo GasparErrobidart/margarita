@@ -5,6 +5,8 @@ import controller.*;
 import configurator.*;
 import java.io.IOException;
 import org.json.simple.parser.ParseException;
+import java.util.Random;
+
 
 public class Main {
 
@@ -12,28 +14,46 @@ public class Main {
 
     Configurator config = Configurator.getInstance();
     config.initiateFPSfromJson();
-
+    config.setFPS(24);
+    Random rand = new Random();
     Scene scene = Scene.getInstance();
 
     Ground ground = new Ground();
+    GroundDecoration groundDec = new GroundDecoration(ground);
     Ground ground2 = new Ground();
+    GroundDecoration groundDec2 = new GroundDecoration(ground2);
     Ground ground3 = new Ground();
+    GroundDecoration groundDec3 = new GroundDecoration(ground3);
+    Background background = new Background();
     Player player = new Player();
+
+    DoughnutGenerator doughGen = new DoughnutGenerator();
 
     ground2.setPosition(new Position(400,150));
     ground2.setSize(100,50);
     ground2.getCollider().setSize(100,50);
+    groundDec2.setSize();
+    groundDec2.setPosition();
 
     ground3.setPosition(new Position(300,350));
     ground3.setSize(50,50);
     ground3.getCollider().setSize(50,100);
+    groundDec3.setSize();
+    groundDec3.setPosition();
 
+
+
+    scene.add(background);
     scene.add(ground);
+    scene.add(groundDec);
     scene.add(ground2);
+    scene.add(groundDec2);
     scene.add(ground3);
+    scene.add(groundDec3);
+    doughGen.addDoughnutsToScene();
     scene.add(player);
 
-    Controller controls = new Controller();
+    Controller controls = Controller.getInstance();
 
     controls.assign("D",new KeyFunction(){
       public void function(){
