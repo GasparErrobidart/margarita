@@ -143,9 +143,9 @@ public class Player extends AnimatedComponent {
     Component component = collision.getOther(getId());
     Box boxA = collision.getBoxA();
     Box boxB = collision.getBoxB();;
-    return  boxA.getBottom() >= boxB.getTop()   &&
-            boxA.getRight()   > boxB.getLeft()  &&
-            boxA.getLeft()    < boxB.getRight() &&
+    return  boxA.getBottom() >= boxB.getTop()  &&
+            boxA.getRight()   >= boxB.getLeft()  &&
+            boxA.getLeft()    <= boxB.getRight() &&
             boxA.getBottom() - boxB.getTop() < 15;
   }
 
@@ -154,8 +154,8 @@ public class Player extends AnimatedComponent {
     Box boxA = collision.getBoxA();
     Box boxB = collision.getBoxB();;
     return  boxA.getTop() <= boxB.getBottom()   &&
-            boxA.getRight()   > boxB.getLeft()  &&
-            boxA.getLeft()    < boxB.getRight() &&
+            boxA.getRight()   >= boxB.getLeft()  &&
+            boxA.getLeft()    <= boxB.getRight() &&
             boxB.getBottom() - boxA.getTop() < 15;
   }
 
@@ -164,8 +164,8 @@ public class Player extends AnimatedComponent {
     Box boxA = collision.getBoxA();
     Box boxB = collision.getBoxB();;
     return  boxA.getRight()  >= boxB.getLeft()   &&
-            boxA.getBottom()   > boxB.getTop()  &&
-            boxA.getTop()    < boxB.getBottom() &&
+            boxA.getBottom() >= boxB.getTop()  &&
+            boxA.getTop()    <= boxB.getBottom() &&
             boxA.getRight()   - boxB.getLeft() < 15;
   }
 
@@ -174,20 +174,19 @@ public class Player extends AnimatedComponent {
     Box boxA = collision.getBoxA();
     Box boxB = collision.getBoxB();;
     return  boxA.getLeft()  <= boxB.getRight()   &&
-            boxA.getBottom()   > boxB.getTop()  &&
-            boxA.getTop()    < boxB.getBottom() &&
+            boxA.getBottom() >= boxB.getTop()  &&
+            boxA.getTop()    <= boxB.getBottom() &&
             boxB.getRight() - boxA.getLeft() < 15;
   }
 
 
   @Override
   public void onCollisionStart(Collision collision){
-    Component component = collision.getOther(getId());
-    if( component.getTag().equals("ground") && collisionIsBeneath(collision) ){
-        System.out.println("Landed");
-        this.landed = true;
-        this.jumpPower = this.maxJumpPower;
-    }
+    // Component component = collision.getOther(getId());
+    // if( component.getTag().equals("ground") && collisionIsBeneath(collision) ){
+    //     this.landed = true;
+    //     this.jumpPower = this.maxJumpPower;
+    // }
   }
 
   @Override
@@ -203,6 +202,9 @@ public class Player extends AnimatedComponent {
           getPosition().getX(),
           boxB.getTop() - ( getHeight() - (getBox().getBottom() - boxA.getBottom()) )
         ));
+        System.out.println("Landed");
+        this.landed = true;
+        this.jumpPower = this.maxJumpPower;
       }
 
       // DETECT IF COLLISION IS ABOVE
@@ -239,6 +241,7 @@ public class Player extends AnimatedComponent {
   @Override
   public void onCollisionEnd(Collision collision){
     Component component = collision.getOther(getId());
+    System.out.println("Collision end - " + collisionIsBeneath(collision));
     if( component.getTag().equals("ground") && collisionIsBeneath(collision)){
       System.out.println("UnLanded");
       this.landed = false;
