@@ -23,6 +23,8 @@ public class Main {
     Ground ground2 = new Ground();
     // GroundDecoration groundDec2 = new GroundDecoration(ground2);
     Ground ground3 = new Ground();
+    Ground ground4 = new Ground();
+    Ground ground5 = new Ground();
     // GroundDecoration groundDec3 = new GroundDecoration(ground3);
     Background background = new Background();
     Player player = new Player();
@@ -31,15 +33,16 @@ public class Main {
 
     ground2.setPosition(new Position(400,150));
     ground2.setSize(100,50);
-    ground2.getCollider().setSize(100,50);
-    // groundDec2.setSize();
-    // groundDec2.setPosition();
 
     ground3.setPosition(new Position(300,350));
     ground3.setSize(50,50);
-    ground3.getCollider().setSize(50,100);
-    // groundDec3.setSize();
-    // groundDec3.setPosition();
+
+
+    ground4.setPosition(new Position(500,450));
+    ground4.setSize(50,100);
+
+    ground5.setPosition(new Position(50,475));
+    ground5.setSize(100,50);
 
 
 
@@ -49,6 +52,8 @@ public class Main {
     scene.add(ground2);
     // scene.add(groundDec2);
     scene.add(ground3);
+    scene.add(ground4);
+    scene.add(ground5);
     // scene.add(groundDec3);
     doughGen.addDoughnutsToScene();
     scene.add(player);

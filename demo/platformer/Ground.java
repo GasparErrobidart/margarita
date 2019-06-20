@@ -16,18 +16,24 @@ public class Ground extends Component {
     setCollider(new BoxCollider( getWidth(),getHeight() ));
   }
 
+  @Override
+  public void setSize(int width, int height){
+    getCollider().setSize(width, height);
+    super.setSize(width,height);
+  }
+
 
   // RENDER THE BOX COLLIDER AREA, GOOD FOR DEBUG
-  @Override
-  public BufferedImage render(){
-    BufferedImage colliderImg = new BufferedImage(getCollider().getWidth(),getCollider().getHeight(),BufferedImage.TYPE_INT_RGB);
-    BufferedImage img = colliderImg;
-    // BufferedImage img = new BufferedImage(getWidth(),getHeight(),BufferedImage.TYPE_INT_RGB);
-    // Graphics g = img.getGraphics();
-    // g.setColor ( new Color (100, 0, 0 ) );
-    // g.fillRect(0, 0, getWidth(),getHeight());
-    // g.drawImage(colliderImg, getCollider().getPosition().getX(), getCollider().getPosition().getY(), null);
-    return img;
-  }
+  // @Override
+  // public BufferedImage render(){
+  //   BufferedImage colliderImg = new BufferedImage(getCollider().getWidth(),getCollider().getHeight(),BufferedImage.TYPE_INT_RGB);
+  //   BufferedImage img = colliderImg;
+  //   // BufferedImage img = new BufferedImage(getWidth(),getHeight(),BufferedImage.TYPE_INT_RGB);
+  //   // Graphics g = img.getGraphics();
+  //   // g.setColor ( new Color (100, 0, 0 ) );
+  //   // g.fillRect(0, 0, getWidth(),getHeight());
+  //   // g.drawImage(colliderImg, getCollider().getPosition().getX(), getCollider().getPosition().getY(), null);
+  //   return img;
+  // }
 
 }
