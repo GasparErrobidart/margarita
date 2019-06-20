@@ -34,7 +34,7 @@ public class Main {
     ground2.setPosition(new Position(400,150));
     ground2.setSize(100,50);
 
-    ground3.setPosition(new Position(300,350));
+    ground3.setPosition(new Position(300,400));
     ground3.setSize(50,100);
 
 
