@@ -62,7 +62,7 @@ public class Main {
     scene.add(player);
 
     themePlayer.setUpPlayer(themeSongPath);
-
+    themePlayer.setVolume(0.7f);
     Controller controls = Controller.getInstance();
 
     controls.assign("D",new KeyFunction(){

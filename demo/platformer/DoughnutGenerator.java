@@ -21,6 +21,7 @@ public class DoughnutGenerator{
        Integer x = rand.nextInt(500)+100-doughnut.getWidth();
        Integer y = rand.nextInt(500)+100-doughnut.getHeight();
        doughnut.setPosition(new Position(x,y));
+       doughnut.setVolume(0.8f);
        doughnuts.add(doughnut);
        ;
      }

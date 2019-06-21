@@ -5,6 +5,7 @@ import java.awt.event.WindowEvent;
 import java.io.*;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.swing.JFrame;
 
 import animaper.Scene;
@@ -68,4 +69,16 @@ public class ThemeSongPlayer {
         }
         return clip;
     }
+
+    public void setVolume(float volume){
+        if(loadedThemeSong !=null ){
+            FloatControl gainControl = (FloatControl) loadedThemeSong.getControl(FloatControl.Type.MASTER_GAIN);
+            float range = gainControl.getMaximum() - gainControl.getMinimum();
+
+            float gain = (range *volume ) + gainControl.getMinimum();
+
+            gainControl.setValue(gain);
+        }
+        
+     }
 }

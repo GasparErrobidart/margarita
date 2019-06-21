@@ -1,9 +1,12 @@
 package demo.platformer;
+
 import animaper.*;
 import puppeteer.*;
 import java.io.*;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+
 import java.util.Random;
 
 public class Doughnut extends Component {
@@ -46,6 +49,19 @@ public class Doughnut extends Component {
       clip.start();
     }
   }
+
+  public void setVolume(float volume){
+    if(loadedCoinSound !=null ){
+        FloatControl gainControl = (FloatControl) loadedCoinSound.getControl(FloatControl.Type.MASTER_GAIN);
+        float range = gainControl.getMaximum() - gainControl.getMinimum();
+
+        float gain = (range *volume ) + gainControl.getMinimum();
+
+        gainControl.setValue(gain);
+    }
+    
+ }
+
   /**
    * @return the floatingDistance
    */
