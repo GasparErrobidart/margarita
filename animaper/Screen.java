@@ -12,7 +12,7 @@ public class Screen{
 
   public Screen(int width, int height){
     window = new JFrame("WINDOW");
-    window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     window.setVisible(true);
     window.setSize(new Dimension(width,height));
   }
