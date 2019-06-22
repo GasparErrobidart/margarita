@@ -316,7 +316,7 @@ Configurator config = Configurator.getInstance();
 
 Now, all you need to do to make it all work it just call , in your main, the scene method called .start() and the magic will begin !
 
-Is anything else i need to know?
+## Is anything else i need to know?
 
 	These titles are not getting any shorter, aren’t they?
 
